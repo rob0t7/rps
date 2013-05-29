@@ -1,0 +1,18 @@
+{
+  "name": "robs-rps",
+  "version": "0.0.0",
+  "description": "Rob's RPS Bot",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Robert Jackiewicz",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "mocha": "~1.10.0",
+    "grunt-contrib-jshint": "~0.5.4",
+    "grunt-mocha-test": "~0.4.0"
+  }
+}
