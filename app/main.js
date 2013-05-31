@@ -1,9 +1,14 @@
 "use strict";
 
-
+// The following are the helper functinos that are provided by the
+// framework.  Since I did not have access to them I reimplemented
+// them so that if I choose to use them I could properly test my
+// RPS bot (which are located in the test folder).  The functions are
+// by no mean efficient and in most cases I choose the most naive
+// impelmentation
 var RPS = {Player: new Object()};
+
 RPS.Moves = {ROCK: 1, PAPER: 2, SCISSORS: 3};
-global.RPS = RPS;
 
 RPS.randomMove = function() {
   return Math.floor(Math.random() * 3 + 1);
@@ -43,8 +48,9 @@ RPS.result = function(a, b) {
 };
 
 
-// Rob's RPS Player class
-/*
+/* Rob's RPS Player class
+   =======================
+
   Some sample strategies to use:
     1) Most often rookies start playing with ROCK.  A good strategy is
        to use an opening move like scissors since most experienced
@@ -61,24 +67,16 @@ RPS.result = function(a, b) {
 RPS.Player.RobsPlayer = (function() {
   var RobsPlayer = function() {
     this.NAME = "Rob's Player";
-    this.lastMoves = [];
+    this.lastMoves = [undefined, undefined];
     this.won = 0;
   };
 
   RobsPlayer.prototype.throwMove = function() {
-    if (this.won === 1) {
+    if (this.won === 1 || this.lastMoves[0] === this.lastMoves[1]) {
       if (this.lastMoves[0] === RPS.Moves.SCISSORS)
         return RPS.Moves.PAPER;
-      else if (this.lastMoves[0] === RPS.Moves.ROCK)
-        return RPS.Moves.SCISSORS;
-      else
+      else if (this.lastMoves[0] === RPS.Moves.PAPER)
         return RPS.Moves.ROCK;
-    }
-    if (this.lastMoves[0] === this.lastMoves[1]) {
-      if (this.lastMoves[0] === RPS.Moves.PAPER)
-        return RPS.Moves.ROCK;
-      else if (this.lastMoves[0] === RPS.Moves.SCISSORS)
-        return RPS.Moves.PAPER;
       else
         return RPS.Moves.SCISSORS;
     }
@@ -86,11 +84,12 @@ RPS.Player.RobsPlayer = (function() {
   };
 
   RobsPlayer.prototype.addResult = function(result, opponentMove) {
-    if (this.lastMoves.length >= 2)
-      this.lastMoves.pop();
+    this.lastMoves.pop();
     this.lastMoves.unshift(opponentMove);
     this.won = result;
   };
 
   return RobsPlayer;
 })();
+
+exports.RPS = RPS;

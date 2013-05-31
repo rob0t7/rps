@@ -1,7 +1,6 @@
-require('../app/main.js');
+var RPS = require('../app/main.js').RPS;
 var chai = require('chai');
 var expect = chai.expect;
-var RPS = global.RPS;
 
 describe("RobsPlayer", function() {
   beforeEach(function(){ myPlayer = new RPS.Player.RobsPlayer(); });
