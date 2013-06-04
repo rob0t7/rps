@@ -8,6 +8,9 @@ the tournament director will invoke to receive the bot's moves.  The
 final tournament to test the quality of this AI, will be against other
 unseen bots of similar complexity.
 
+Also the other questions like strcpy are located in the
+extra-questions folder.
+
 ## Requirements
 
   * grunt-cli >= v0.1.7
@@ -18,9 +21,11 @@ unseen bots of similar complexity.
 To get started and install the required libraries to test the code
 run:
 
-  npm install
-  grunt
-  
+```
+npm install
+grunt
+```
+
 ## Strategy
 
 Some sample strategies to use:
